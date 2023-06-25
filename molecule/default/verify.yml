@@ -9,12 +9,12 @@
     - name: "Verify Java -version, with alternative / default"
       register: java_version_output
       changed_when: java_version_output.rc != 0
-      failed_when: "'build {{ tower_java_version }}' not in java_version_output.stderr"
+      failed_when: "'build {{ inv_java_version }}' not in java_version_output.stderr"
       ansible.builtin.command: java -version
 
-    - name: "Check Java versions {{ tower_java_version }}/8 binaires files"
+    - name: "Check Java versions {{ inv_java_version }}/8 binaires files"
       block:
-        - name: "Check Java java-{{ tower_java_version }} custom binaries"
+        - name: "Check Java java-{{ inv_java_version }} custom binaries"
           loop:
             - "/usr/bin"
             - "/bin"
@@ -23,7 +23,7 @@
           register: file_check
           failed_when: not file_check.stat.exists
           ansible.builtin.stat:
-            path: "{{ java_path }}/java-{{ tower_java_version }}"
+            path: "{{ java_path }}/java-{{ inv_java_version }}"
 
         - name: "Check Java java-8 custom binaries"
           block:
@@ -40,16 +40,16 @@
 
     - name: "Verify Java -version, with custom binaries"
       block:
-        - name: "Verify Java -version, with custom binaries for Java {{ tower_java_version }}"
+        - name: "Verify Java -version, with custom binaries for Java {{ inv_java_version }}"
           loop:
-            - "java-{{ tower_java_version }}"
-            - "/usr/bin/java-{{ tower_java_version }}"
-            - "/bin/java-{{ tower_java_version }}"
+            - "java-{{ inv_java_version }}"
+            - "/usr/bin/java-{{ inv_java_version }}"
+            - "/bin/java-{{ inv_java_version }}"
           loop_control:
             loop_var: java_call
           register: java_version_output
           changed_when: java_version_output.rc != 0
-          failed_when: "'build {{ tower_java_version }}' not in java_version_output.stderr"
+          failed_when: "'build {{ inv_java_version }}' not in java_version_output.stderr"
           ansible.builtin.command: "{{ java_call }} -version"
 
         - name: "Verify Java -version, with custom binaries for Java 8"

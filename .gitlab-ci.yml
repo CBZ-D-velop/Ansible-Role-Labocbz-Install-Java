@@ -71,6 +71,7 @@ variables:
     # This probably happens due to gitlab-runner mounting the git repo into the container
     - cp ./.ansible.cfg /root/.ansible.cfg
     - chmod o-w .
+    - molecule lint
     - molecule test --scenario-name $PIPELINE_SCENARIO_NAME
   allow_failure: false
   retry: 2
