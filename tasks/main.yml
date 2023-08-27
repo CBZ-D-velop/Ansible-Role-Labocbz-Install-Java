@@ -1,5 +1,7 @@
 ---
-- name: "Add Java Repository"
+- name: "Add Java SID Repository"
+  register: output
+  changed_when: output.changed != true
   ansible.builtin.apt_repository:
     repo: "deb http://deb.debian.org/debian/ sid main"
 
@@ -34,3 +36,10 @@
     owner: "root"
     group: "root"
     mode: 0711
+
+- name: "Remove Java SID Repository"
+  register: output
+  changed_when: output.changed != true
+  ansible.builtin.apt_repository:
+    repo: "deb http://deb.debian.org/debian/ sid main"
+    state: absent

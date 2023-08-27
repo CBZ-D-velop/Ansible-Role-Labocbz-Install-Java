@@ -161,6 +161,10 @@ Here you can put your change to keep a trace of your work and decisions.
 
 * First init of this role with the bootstrap_role playbook by Lord Robin Crombez
 
+### 2023-08-27: Remove SID
+
+* Role use SID repository to install Java, so reposis deleted after installation
+
 ## Authors
 
 * Lord Robin Crombez
