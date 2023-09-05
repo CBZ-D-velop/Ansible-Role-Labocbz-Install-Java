@@ -163,7 +163,7 @@ Here you can put your change to keep a trace of your work and decisions.
 
 ### 2023-08-27: Remove SID
 
-* Role use SID repository to install Java, so reposis deleted after installation
+* Role use SID repository to install Java, so repos is deleted after installation
 
 ## Authors
 
