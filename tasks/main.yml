@@ -7,7 +7,7 @@
 
 - name: "Install Java {{ java_version }}"
   ansible.builtin.package:
-    update_cache: yes
+    update_cache: no
     name:
       - "openjdk-{{ java_version }}-jdk"
 
