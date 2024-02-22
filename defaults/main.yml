@@ -1,4 +1,4 @@
 ---
-java_version: 8
-java_cpu_architecture: "amd64"
-java_version_is_default: true
+instal_java__version: 8
+instal_java__cpu_architecture: "amd64"
+instal_java__version_is_default: true
