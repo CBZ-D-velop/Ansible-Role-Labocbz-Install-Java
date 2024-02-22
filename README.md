@@ -178,6 +178,7 @@ Here you can put your change to keep a trace of your work and decisions.
 * Added Sonarqube
 * Added support for Debian 12/11
 * Added support for Ubuntu 22
+* Removed dual Java install for tests
 
 ## Authors
 
