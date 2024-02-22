@@ -26,7 +26,7 @@
           failed_when: "'build {{ inv_instal_java__version }}' not in instal_java__version_output.stderr"
           ansible.builtin.command: "{{ instal_java__call }} -version"
 
-        - name: "Verify Java -version, with custom binaries for Java 8"
+        - name: "Verify Java -version, with custom binaries for Java 17"
           loop:
             - "java-17"
             - "/usr/bin/java-17"
