@@ -111,9 +111,9 @@ Some vars a required to run this role:
 
 ```YAML
 ---
-java_version: 8
-java_cpu_architecture: "amd64"
-java_version_is_default: true
+instal_java__version: 8
+instal_java__cpu_architecture: "amd64"
+instal_java__version_is_default: true
 
 ```
 
@@ -126,8 +126,8 @@ In order to surchage vars, you have multiples possibilities but for mains cases 
 ```YAML
 # From inventory
 ---
-inv_java_cpu_architecture: "amd64"
-inv_java_version: 11
+inv_instal_java__cpu_architecture: "amd64"
+inv_instal_java__version: 17
 
 ```
 
@@ -143,13 +143,13 @@ To run this role, you can copy the molecule/default/converge.yml playbook and ad
 
 ```YAML
 - name: "Include labocbz.install_java"
-    tags:
+  tags:
     - "labocbz.install_java"
-    vars:
-    java_version: "{{ inv_java_version }}"
-    java_cpu_architecture: "{{ inv_java_cpu_architecture }}"
-    java_version_is_default: true
-    ansible.builtin.include_role:
+  vars:
+    instal_java__version: "{{ inv_instal_java__version }}"
+    instal_java__cpu_architecture: "{{ inv_instal_java__cpu_architecture }}"
+    instal_java__version_is_default: true
+  ansible.builtin.include_role:
     name: "labocbz.install_java"
 ```
 
@@ -171,6 +171,13 @@ Here you can put your change to keep a trace of your work and decisions.
 * Molecule now use remote Docker image by Lord Robin Crombez
 * Molecule now use custom Docker image in CI/CD by env vars
 * New CICD with needs and optimization
+
+### 2024-02-22: New support
+
+* New CI
+* Added Sonarqube
+* Added support for Debian 12/11
+* Added support for Ubuntu 22
 
 ## Authors
 
