@@ -26,14 +26,14 @@
           failed_when: "'build {{ inv_instal_java__version }}' not in instal_java__version_output.stderr"
           ansible.builtin.command: "{{ instal_java__call }} -version"
 
-        - name: "Verify Java -version, with custom binaries for Java 17"
+        - name: "Verify Java -version, with custom binaries for Java {{ inv_instal_java__version }}"
           loop:
-            - "java-17"
-            - "/usr/bin/java-17"
-            - "/bin/java-17"
+            - "java-{{ inv_instal_java__version }}"
+            - "/usr/bin/java-{{ inv_instal_java__version }}"
+            - "/bin/java-{{ inv_instal_java__version }}"
           loop_control:
             loop_var: instal_java__call
           register: instal_java__version_output
           changed_when: instal_java__version_output.rc != 0
-          failed_when: "'build 1.8' not in instal_java__version_output.stderr"
+          failed_when: "'build {{ inv_instal_java__version }}' not in instal_java__version_output.stderr"
           ansible.builtin.command: "{{ instal_java__call }} -version"
