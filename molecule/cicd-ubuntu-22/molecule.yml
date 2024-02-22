@@ -23,7 +23,7 @@ platforms:
     cgroup_manager: "cgroupfs"
     storage_driver: "overlay2"
     networks:
-      - name: "molecule-cicd-ubuntu-22-prepare-host"
+      - name: "molecule-cicd-ubuntu-22-install-java"
 
 provisioner:
   name: "ansible"
