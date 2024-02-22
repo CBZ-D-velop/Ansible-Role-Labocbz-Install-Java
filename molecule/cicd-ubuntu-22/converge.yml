@@ -7,17 +7,7 @@
       tags:
         - "labocbz.install_java"
       vars:
-        instal_java__version: "8"
-        instal_java__cpu_architecture: "{{ inv_instal_java__cpu_architecture }}"
-        instal_java__version_is_default: false
-      ansible.builtin.include_role:
-        name: "labocbz.install_java"
-
-    - name: "Include labocbz.install_java"
-      tags:
-        - "labocbz.install_java"
-      vars:
-        instal_java__version: "{{ inv_instal_java__version }}"
+        instal_java__version: "17"
         instal_java__cpu_architecture: "{{ inv_instal_java__cpu_architecture }}"
         instal_java__version_is_default: true
       ansible.builtin.include_role:

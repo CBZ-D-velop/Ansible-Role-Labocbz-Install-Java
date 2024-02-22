@@ -12,32 +12,6 @@
       failed_when: "'build {{ inv_instal_java__version }}' not in instal_java__version_output.stderr"
       ansible.builtin.command: java -version
 
-    - name: "Check Java versions {{ inv_instal_java__version }}/8 binaires files"
-      block:
-        - name: "Check Java java-{{ inv_instal_java__version }} custom binaries"
-          loop:
-            - "/usr/bin"
-            - "/bin"
-          loop_control:
-            loop_var: instal_java__path
-          register: file_check
-          failed_when: not file_check.stat.exists
-          ansible.builtin.stat:
-            path: "{{ instal_java__path }}/java-{{ inv_instal_java__version }}"
-
-        - name: "Check Java java-8 custom binaries"
-          block:
-          - name: "Check Java java-8 custom binaries"
-            loop:
-              - "/usr/bin"
-              - "/bin"
-            loop_control:
-              loop_var: instal_java__path
-            register: file_check
-            failed_when: not file_check.stat.exists
-            ansible.builtin.stat:
-              path: "{{ instal_java__path }}/java-8"
-
     - name: "Verify Java -version, with custom binaries"
       block:
         - name: "Verify Java -version, with custom binaries for Java {{ inv_instal_java__version }}"
@@ -54,9 +28,9 @@
 
         - name: "Verify Java -version, with custom binaries for Java 8"
           loop:
-            - "java-8"
-            - "/usr/bin/java-8"
-            - "/bin/java-8"
+            - "java-17"
+            - "/usr/bin/java-17"
+            - "/bin/java-17"
           loop_control:
             loop_var: instal_java__call
           register: instal_java__version_output

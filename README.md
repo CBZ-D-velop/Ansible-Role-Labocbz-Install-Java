@@ -127,7 +127,7 @@ In order to surchage vars, you have multiples possibilities but for mains cases 
 # From inventory
 ---
 inv_instal_java__cpu_architecture: "amd64"
-inv_instal_java__version: 11
+inv_instal_java__version: 17
 
 ```
 
