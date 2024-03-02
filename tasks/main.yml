@@ -10,29 +10,29 @@
   ansible.builtin.package:
     update_cache: true
     name:
-      - "openjdk-{{ instal_java__version }}-jdk"
+      - "openjdk-{{ install_java__version }}-jdk"
 
 - name: "Verify Java -version, with alternative / default"
-  register: instal_java__version_output
-  changed_when: instal_java__version_output.rc != 0
+  register: install_java__version_output
+  changed_when: install_java__version_output.rc != 0
   ansible.builtin.command: java -version
 
 - name: "Set Java as default version"
-  when: instal_java__version_is_default is defined and instal_java__version_is_default and "build " ~ instal_java__version not in instal_java__version_output.stderr
+  when: install_java__version_is_default is defined and install_java__version_is_default and "build " ~ install_java__version not in install_java__version_output.stderr
   community.general.alternatives:
     name: "java"
-    path: "/usr/lib/jvm/java-{{ instal_java__version }}-openjdk-{{ instal_java__cpu_architecture }}/bin/java"
+    path: "/usr/lib/jvm/java-{{ install_java__version }}-openjdk-{{ install_java__cpu_architecture }}/bin/java"
     priority: 100
 
-- name: "Add a java-version in /usr/bin and /bin for Java {{ instal_java__version }}"
+- name: "Add a java-version in /usr/bin and /bin for Java {{ install_java__version }}"
   loop:
     - "/usr/bin"
     - "/bin"
   loop_control:
-    loop_var: instal_java__path
+    loop_var: install_java__path
   ansible.builtin.file:
-    src: "/usr/lib/jvm/java-{{ instal_java__version }}-openjdk-{{ instal_java__cpu_architecture }}/bin/java"
-    dest: "{{ instal_java__path }}/java-{{ instal_java__version }}"
+    src: "/usr/lib/jvm/java-{{ install_java__version }}-openjdk-{{ install_java__cpu_architecture }}/bin/java"
+    dest: "{{ install_java__path }}/java-{{ install_java__version }}"
     state: link
     owner: "root"
     group: "root"
