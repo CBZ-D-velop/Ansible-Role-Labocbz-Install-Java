@@ -111,9 +111,9 @@ Some vars a required to run this role:
 
 ```YAML
 ---
-instal_java__version: 8
-instal_java__cpu_architecture: "amd64"
-instal_java__version_is_default: true
+install_java__version: 8
+install_java__cpu_architecture: "amd64"
+install_java__version_is_default: true
 
 ```
 
@@ -126,8 +126,8 @@ In order to surchage vars, you have multiples possibilities but for mains cases 
 ```YAML
 # From inventory
 ---
-inv_instal_java__cpu_architecture: "amd64"
-inv_instal_java__version: 17
+inv_install_java__cpu_architecture: "amd64"
+inv_install_java__version: 17
 
 ```
 
@@ -146,9 +146,9 @@ To run this role, you can copy the molecule/default/converge.yml playbook and ad
   tags:
     - "labocbz.install_java"
   vars:
-    instal_java__version: "{{ inv_instal_java__version }}"
-    instal_java__cpu_architecture: "{{ inv_instal_java__cpu_architecture }}"
-    instal_java__version_is_default: true
+    install_java__version: "{{ inv_install_java__version }}"
+    install_java__cpu_architecture: "{{ inv_install_java__cpu_architecture }}"
+    install_java__version_is_default: true
   ansible.builtin.include_role:
     name: "labocbz.install_java"
 ```
