@@ -7,6 +7,10 @@
     repo: "deb http://deb.debian.org/debian/ sid main"
 
 - name: "Install Java"
+  retries: 3
+  delay: 10
+  until: output is success
+  register: output
   ansible.builtin.package:
     update_cache: true
     name:
